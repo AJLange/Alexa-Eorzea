@@ -1,0 +1,77 @@
+{
+	"manifest": {
+		"publishingInformation": {
+			"locales": {
+				
+				"en-AU": {
+					"summary": "Learn about Final Fantasy XIV Facts.",
+					"examplePhrases": [
+					],
+					"keywords": [ "game", "facts", "trivia" ],
+					"name": "Fantasy Facts",
+					"description": "Ask for Final Fantasy Facts.\n\n"
+				},
+				"en-CA": {
+                    "summary": "Learn about Final Fantasy XIV Facts.",
+					"examplePhrases": [
+					],
+					"keywords": [ "game", "facts", "trivia" ],
+					"name": "Fantasy Facts",
+					"description": "Ask for Final Fantasy Facts.\n\n"
+				},
+				"en-GB": {
+                    "summary": "Learn about Final Fantasy XIV Facts.",
+					"examplePhrases": [
+					],
+					"keywords": [ "game", "facts", "trivia" ],
+					"name": "Fantasy Facts",
+					"description": "Ask for Final Fantasy Facts.\n\n"
+				},
+				"en-IN": {
+                    "summary": "Learn about Final Fantasy XIV Facts.",
+					"examplePhrases": [
+					],
+					"keywords": [ "game", "facts", "trivia" ],
+					"name": "Fantasy Facts",
+					"description": "Ask for Final Fantasy Facts.\n\n"
+				},
+				"en-US": {
+                    "summary": "Learn about Final Fantasy XIV Facts.",
+					"examplePhrases": [
+					],
+					"keywords": [ "game", "facts", "trivia" ],
+					"name": "Fantasy Facts",
+					"description": "Ask for Final Fantasy Facts.\n\n"
+				},
+				"es-ES": {
+					"summary": "Aprenda datos divertidos sobre el final fantasy.",
+					"examplePhrases": [ ],
+					"keywords": [ "juegos", "datos" ],
+					"name": "Curiosidades del final fantasy",
+					"description": ""
+				},
+				"es-MX": {
+					"summary": "Aprenda datos divertidos sobre el final fantasy.",
+					"examplePhrases": [ ],
+					"keywords": [ "juegos", "datos" ],
+					"name": "Curiosidades del final fantasy",
+					"description": ""		},
+				"es-US": {
+					"summary": "Aprenda datos divertidos sobre el final fantasy.",
+					"examplePhrases": [ ],
+					"keywords": [ "juegos", "datos" ],
+					"name": "Curiosidades del final fantasy",
+					"description": ""			}
+			}
+		},
+		"apis": {
+			"custom": {
+				"endpoint": {
+					"sourceDir": "lambda/py/lambda_upload",
+					"uri": "ask-custom-fact-default"
+				}
+			}
+		},
+		"manifestVersion": "1.0"
+	}
+}
