@@ -25,8 +25,10 @@ class GetDataApiHandler(AbstractRequestHandler):
 
         return utils.isApiRequest(handler_input, 'GetDataApi')
 
-    def handle(self, handler_input):
-        
+    def handle(self):
+        '''
+        Holding this in place for if I need it later.
+        '''
 
         response = {
             'apiResponse': {
@@ -56,6 +58,47 @@ class GetServerNameHandler(AbstractRequestHandler):
 
         handler_input.response_builder.speak(speech).set_card(
             SimpleCard(data[prompts.SKILL_NAME], random_fact))
+        return handler_input.response_builder.response
+
+class GetServerNameHandler(AbstractRequestHandler):
+    '''let's get the name of a server from the list to test data connection'''
+
+
+    def handle(self, handler_input):
+        # type: (HandlerInput) -> Response
+        logger.info("In GetServerNameHandler")
+
+        # get localization data
+        data = handler_input.attributes_manager.request_attributes["_"]
+
+        random_server = random.choice(data[prompts.FACTS])
+        speech = data[prompts.GET_FACT_MESSAGE].format(random_server)
+
+        handler_input.response_builder.speak(speech).set_card(
+            SimpleCard(data[prompts.SKILL_NAME], random_server))
+        return handler_input.response_builder.response
+
+class GetForecastIntentHandler(AbstractRequestHandler):
+    '''intent to get a weather forecast'''
+
+    def can_handle(self, handler_input):
+        # type: (HandlerInput) -> bool
+        return (is_request_type("LaunchRequest")(handler_input) or
+                is_intent_name("GetNewServerIntent")(handler_input))
+
+
+    def handle(self, handler_input):
+        # type: (HandlerInput) -> Response
+        logger.info("In GetForecastIntentHandler")
+
+        # get localization data
+        data = handler_input.attributes_manager.request_attributes["_"]
+
+        my_forecast = random.choice(data[prompts.WEATHER])
+        speech = data[prompts.GET_WEATHER].format(my_forecast)
+
+        handler_input.response_builder.speak(speech).set_card(
+            SimpleCard(data[prompts.SKILL_NAME], my_forecast))
         return handler_input.response_builder.response
 
 
@@ -209,6 +252,7 @@ sb.add_request_handler(GetDataApiHandler())
 sb.add_request_handler(SessionEndedRequestHandler())
 sb.add_request_handler(HelpIntentHandler())
 sb.add_request_handler(GetServerNameHandler())
+sb.add_request_handler(GetForecastIntentHandler())
 sb.add_request_handler(CancelOrStopIntentHandler())
 sb.add_request_handler(FallbackIntentHandler())
 sb.add_request_handler(IntentReflectorHandler())
